@@ -1,7 +1,6 @@
 import React,  { Component } from 'react';
 
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View
@@ -9,8 +8,6 @@ import {
 
 import {
   TabBar,
-  Icon,
-  Grid,
   Button,
 } from 'antd-mobile';
 
@@ -22,7 +19,6 @@ class App extends Component {
     super(props);
     this.state = {
       selectedTab: 'home',
-      hidden: false,
     };
   }
 
@@ -38,12 +34,12 @@ class App extends Component {
 
   render() {
     const { selectedTab } = this.state;
+
     return (
       <TabBar
-        unselectedTintColor="#949494"
-        tintColor="#33A3F4"
         barTintColor="white"
-        hidden={this.state.hidden}
+        tintColor="#33A3F4"
+        unselectedTintColor="#949494"
       >
         <TabBarItem
           key="home"
@@ -92,11 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
   },
   instructions: {
     textAlign: 'center',
