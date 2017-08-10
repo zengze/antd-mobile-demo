@@ -6,6 +6,7 @@ import {
   Text,
   View
 } from 'react-native';
+
 import {
   TabBar,
   Icon,
@@ -20,12 +21,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'home',
       hidden: false,
     };
   }
 
+  _showTabBar(text) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.instructions}>
+          这是“{text}”标签
+        </Text>
+      </View>
+    )
+  }
+
   render() {
+    const { selectedTab } = this.state;
     return (
       <TabBar
         unselectedTintColor="#949494"
@@ -34,28 +46,40 @@ class App extends Component {
         hidden={this.state.hidden}
       >
         <TabBarItem
-          title="我的"
-          key="我的"
-          selected={this.state.selectedTab === 'yellowTab'}
+          key="home"
+          title="首页"
+          selected={selectedTab === 'home'}
           onPress={() => {
             this.setState({
-              selectedTab: 'yellowTab',
+              selectedTab: 'home',
             });
           }}
         >
-          <View style={styles.container}>
-            <Text style={styles.welcome}>
-              Welcome to React Native!
-            </Text>
-            <Text style={styles.instructions}>
-              To get started, edit index.ios.js
-            </Text>
-            <Text style={styles.instructions}>
-              Press Cmd+R to reload,{'\n'}
-              Cmd+D or shake for dev menu
-            </Text>
-            <Button>zz</Button>
-          </View>
+          {this._showTabBar('首页')}
+        </TabBarItem>
+        <TabBarItem
+          key="friend"
+          title="好友"
+          selected={selectedTab === 'friend'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'friend',
+            });
+          }}
+        >
+          {this._showTabBar('好友')}
+        </TabBarItem>
+        <TabBarItem
+          key="me"
+          title="我的"
+          selected={selectedTab === 'me'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'me',
+            });
+          }}
+        >
+          {this._showTabBar('我的')}
         </TabBarItem>
       </TabBar>
     );
