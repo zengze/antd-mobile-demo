@@ -1,99 +1,96 @@
-import React,  { Component } from 'react';
+import React, { Component } from 'react';
 
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
 } from 'react-native';
 
 import {
-  TabBar,
+  TabNavigator,
+  TabBarBottom,
+} from 'react-navigation';
+
+import {
   Button,
 } from 'antd-mobile';
 
-const TabBarItem = TabBar.Item;
+import HomeScreen from './pages/HomePage';
+import MineScreen from './pages/MinePage';
+
+
+const Tab = TabNavigator({
+    Home: {
+      //screen：对应界面名称，需要填入import之后的页面，可以在其他页面通过这个screen传值和跳转。
+      screen: HomeScreen,
+      //配置TabNavigator的一些属性
+      navigationOptions: ({navigation}) => ({
+        //设置标签栏的title
+        tabBarLabel: '首页',
+        //设置标签栏的图标。需要给每个都设置
+        tabBarIcon: ({focused,tintColor}) => (
+          //focused是否选中标签
+          //tintColor选中时的颜色
+          focused
+          ?
+            <Image
+              source={require('./img/home.png')}
+              style={styles.icon}
+            />
+          :
+            <Image
+              source={require('./img/home-o.png')}
+              style={styles.icon}
+            />
+        )
+      }),
+    },
+    Mine:{
+      screen: MineScreen,
+      navigationOptions: ({navigation}) => ({
+        tabBarLabel: '我',
+      }),
+    },
+  },
+  {
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    swipeEnabled: false,
+    animationEnabled: false,
+    lazy: true,
+    tabBarOptions: {
+      activeTintColor: '#06c1ae',
+      inactiveTintColor: '#979797',
+      style: { backgroundColor: '#ffffff' },
+      labelStyle: {
+        fontSize: 14, // 文字大小
+      },
+    }
+  }
+);
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'home',
+
     };
   }
 
-  _showTabBar(text) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.instructions}>
-          这是“{text}”标签
-        </Text>
-      </View>
-    )
-  }
-
   render() {
-    const { selectedTab } = this.state;
-
     return (
-      <TabBar
-        barTintColor="white"
-        tintColor="#33A3F4"
-        unselectedTintColor="#949494"
-      >
-        <TabBarItem
-          key="home"
-          title="首页"
-          selected={selectedTab === 'home'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'home',
-            });
-          }}
-        >
-          {this._showTabBar('首页')}
-        </TabBarItem>
-        <TabBarItem
-          key="friend"
-          title="好友"
-          selected={selectedTab === 'friend'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'friend',
-            });
-          }}
-        >
-          {this._showTabBar('好友')}
-        </TabBarItem>
-        <TabBarItem
-          key="me"
-          title="我的"
-          selected={selectedTab === 'me'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'me',
-            });
-          }}
-        >
-          {this._showTabBar('我的')}
-        </TabBarItem>
-      </TabBar>
+      <Tab />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  icon: {
+    width: 20,
+    height: 20,
+  }
 });
 
 export default App;
