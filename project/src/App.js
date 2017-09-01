@@ -19,7 +19,10 @@ import {
 import HomeScreen from './pages/HomePage';
 import MineScreen from './pages/MinePage';
 
+import homeO from './img/home-o.png';
+import home from './img/home.png';
 
+//底部导航栏
 const Tab = TabNavigator({
     Home: {
       //screen：对应界面名称，需要填入import之后的页面，可以在其他页面通过这个screen传值和跳转。
@@ -32,24 +35,25 @@ const Tab = TabNavigator({
         tabBarIcon: ({focused,tintColor}) => (
           //focused是否选中标签
           //tintColor选中时的颜色
-          focused
-          ?
-            <Image
-              source={require('./img/home.png')}
-              style={styles.icon}
-            />
-          :
-            <Image
-              source={require('./img/home-o.png')}
-              style={styles.icon}
-            />
+          <Image
+            source={focused ? home : homeO}
+            style={styles.icon}
+          />
         )
       }),
     },
-    Mine:{
+    Mine: {
       screen: MineScreen,
       navigationOptions: ({navigation}) => ({
         tabBarLabel: '我',
+        tabBarIcon: ({focused,tintColor}) => (
+          //focused是否选中标签
+          //tintColor选中时的颜色
+          <Image
+            source={focused ? home : homeO}
+            style={styles.icon}
+          />
+        )
       }),
     },
   },
