@@ -17,8 +17,18 @@ import XiaoScreen from './pages/XiaoPage';
 import homeO from './img/home-o.png';
 import home from './img/home.png';
 
+class App extends Component {
+
+  render() {
+    return (
+      <Tab />
+    );
+  }
+}
+
 //底部导航栏
-const Tab = TabNavigator({
+const Tab = TabNavigator(
+  {
     Home: {
       //screen：对应界面名称，需要填入import之后的页面，可以在其他页面通过这个screen传值和跳转。
       screen: HomeScreen,
@@ -87,15 +97,6 @@ const Tab = TabNavigator({
     }
   }
 );
-
-class App extends Component {
-
-  render() {
-    return (
-      <Tab />
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   icon: {
