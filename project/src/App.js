@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import {
+  StackNavigator,
   TabNavigator,
   TabBarBottom,
 } from 'react-navigation';
@@ -21,10 +22,39 @@ class App extends Component {
 
   render() {
     return (
-      <Tab />
+      // <Tab />
+      <Stack />
     );
   }
 }
+
+const Stack = StackNavigator(
+  {
+    Home: {
+      //screen：对应界面名称，需要填入import之后的页面，可以在其他页面通过这个screen传值和跳转。
+      screen: HomeScreen,
+      //配置StackNavigator的一些属性
+      navigationOptions: ({navigation}) => ({
+        headerTitle: '首页',
+      }),
+    },
+    Xiao: {
+      screen: XiaoScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: '肖',
+      }),
+    },
+    Mine: {
+      screen: MineScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: '我',
+      }),
+    },
+  },
+  {
+    mode : 'card',
+  }
+);
 
 //底部导航栏
 const Tab = TabNavigator(

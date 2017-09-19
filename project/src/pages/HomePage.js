@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
 } from 'react-native';
 
 const marginTop = Platform.OS === 'ios' ? 20 : 0;
@@ -24,6 +25,14 @@ export default class HomePage extends Component {
           <Text>
             我是首页
           </Text>
+          <Button
+            onPress={() => this.props.navigation.navigate('Home')}
+            title="Go to Home"
+          />
+          <Button
+            onPress={() => this.props.navigation.navigate('Xiao')}
+            title="Go to Xiao"
+          />
         </View>
       </View>
     );
