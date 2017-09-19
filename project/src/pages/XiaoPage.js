@@ -5,7 +5,12 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from 'react-native';
+
+import LiHua from '../img/li-hua.jpeg';
+
+const marginTop = Platform.OS === 'ios' ? 20 : 0;
 
 export default class MinePage extends Component {
 
@@ -15,19 +20,28 @@ export default class MinePage extends Component {
 
   render() {
 
-    let marginTop = Platform.OS === 'ios' ? 20 : 0;
-
     return(
-      <View style={{ flex: 1, marginTop: marginTop }}>
-        <Text onPress={this._skip.bind(this)}>返回上一界面</Text>
-        <Text style={{ height: 400, lineHeight: 400, textAlign: 'center' }}>
+      <Image source={LiHua} style={styles.container}>
+        <Text>
           肖雪丽是猪吗
         </Text>
-      </View>
+      </Image>
     );
   }
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    flex: 1,
+    marginTop: marginTop,
+    // 设置主轴对齐方式
+    justifyContent: 'center',
+    // 设置侧轴对齐方式
+    alignItems: 'center',
+    //按照屏幕自适应
+    width: null,
+    height: null,
+    //祛除内部元素的白色背景
+    backgroundColor: 'rgba(0,0,0,0)',
+  },
 });
