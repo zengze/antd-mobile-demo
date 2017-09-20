@@ -1,7 +1,7 @@
 import React,  { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import rootReducer from './reducers';
+import rootReducer from './redux/reducers';
 import configureStore from './redux/store/configure-store';
 
 import App from './App'
