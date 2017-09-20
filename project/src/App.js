@@ -50,9 +50,6 @@ const Stack = StackNavigator(
         headerTitle: '我',
       }),
     },
-  },
-  {
-    mode : 'card',
   }
 );
 

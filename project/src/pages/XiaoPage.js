@@ -6,6 +6,7 @@ import {
   Text,
   View,
   Image,
+  Button,
 } from 'react-native';
 
 import LiHua from '../img/li-hua.jpeg';
@@ -14,10 +15,6 @@ const marginTop = Platform.OS === 'ios' ? 20 : 0;
 
 export default class MinePage extends Component {
 
-  _skip() {
-    this.props.navigation.goBack();
-  }
-
   render() {
 
     return(
@@ -25,6 +22,10 @@ export default class MinePage extends Component {
         <Text>
           肖雪丽是猪吗
         </Text>
+        <Button
+          onPress={() => this.props.navigation.navigate('Mine')}
+          title="Go to Mine"
+        />
       </Image>
     );
   }
@@ -33,7 +34,6 @@ export default class MinePage extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: marginTop,
     // 设置主轴对齐方式
     justifyContent: 'center',
     // 设置侧轴对齐方式
