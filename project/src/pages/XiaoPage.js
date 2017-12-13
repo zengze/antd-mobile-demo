@@ -20,7 +20,7 @@ export default class MinePage extends Component {
     return(
       <Image source={LiHua} style={styles.container}>
         <Text>
-          肖雪丽是猪吗
+          是猪吗
         </Text>
         <Button
           onPress={() => this.props.navigation.navigate('Mine')}
